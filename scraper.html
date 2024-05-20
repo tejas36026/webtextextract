@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Text Extractor</title>
+</head>
+<body>
+  <h1>Text Extractor</h1>
+  <button onclick="extractText()">Extract Text</button>
+  <pre id="output"></pre>
+
+  <script>
+    function extractText() {
+      fetch('http://localhost:3000/api/extract-text')
+        .then(response => response.text())
+        .then(data => {
+          const outputElement = document.getElementById('output');
+          outputElement.textContent = data;
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+  </script>
+</body>
+</html>
